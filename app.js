@@ -24,7 +24,7 @@ MongoClient.connect(url, (err,db)=>{
         name : "Vanshika",
         age : 20
     }
-    dbo.collection("forms").insertOne(myobj, (err,res)=>{
+    dbo.collection("form1").insertOne(myobj, (err,res)=>{
         if(err) throw err
         console.log("1 doc inserted")
         db.close()
