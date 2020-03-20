@@ -7,12 +7,12 @@ MongoClient.connect(url, (err,db)=>{
     if(err) throw(err)
     console.log("db connected")
 
-    var dbo = db.db("forms")
+    /* var dbo = db.db("forms")
     dbo.createCollection("form1", (err,res)=>{
         if (err) throw err
         console.log("Collection created")
         db.close()
-        })
+        }) */
 
 })
 
@@ -27,6 +27,16 @@ MongoClient.connect(url, (err,db)=>{
     dbo.collection("form1").insertOne(myobj, (err,res)=>{
         if(err) throw err
         console.log("1 doc inserted")
+        db.close()
+    })
+})
+
+MongoClient.connect(url, (err,db)=>{
+    if (err) throw err
+    var dbo = db.db("forms")
+    dbo.collection("form1").find({}).toArray((err, res)=>{
+        if(err) throw err
+        console.log(res)
         db.close()
     })
 })
